@@ -6,11 +6,16 @@ using WpfAppFastApiUI.Models;
 
 namespace WpfAppFastApiUI.Services;
 
+/// <summary>
+/// Сервис для работы с корзиной через API
+/// </summary>
 public static class CartService
 {
-   
     private static readonly HttpClient http = new HttpClient();
-    
+
+    /// <summary>
+    /// Добавить товар в корзину
+    /// </summary>
     public static async Task<bool> AddToCartAsync(int userId, int productId, int quantity, string size)
     {
         var payload = new AddToCartRequest
@@ -24,7 +29,10 @@ public static class CartService
         var response = await http.PostAsJsonAsync("http://localhost:8000/api/cart/", payload);
         return response.IsSuccessStatusCode;
     }
-    
+
+    /// <summary>
+    /// Получить список товаров в корзине пользователя
+    /// </summary>
     public static async Task<List<CartProductResponse>> GetCartProductsAsync(int userId)
     {
         var response = await http.GetFromJsonAsync<List<CartProductResponse>>(
@@ -32,18 +40,22 @@ public static class CartService
 
         return response ?? new List<CartProductResponse>();
     }
-    
-    public static async Task<bool> DeleteCartAsync(int userId)
+
+    /// <summary>
+    /// Удалить все товары из корзины пользователя
+    /// </summary>
+    public static async Task<bool> ClearCartAsync(int userId)
     {
         var response = await http.DeleteAsync($"http://localhost:8000/api/cart/{userId}");
         return response.IsSuccessStatusCode;
     }
-    
+
+    /// <summary>
+    /// Удалить конкретный товар из корзины пользователя
+    /// </summary>
     public static async Task<bool> DeleteProductFromCartAsync(int userId, int productId)
     {
         var response = await http.DeleteAsync($"http://localhost:8000/api/cart/{userId}/product/{productId}");
         return response.IsSuccessStatusCode;
     }
-
-
 }
