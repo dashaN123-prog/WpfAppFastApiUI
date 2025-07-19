@@ -35,6 +35,7 @@ public static class CartService
     /// </summary>
     public static async Task<List<CartProductResponse>> GetCartProductsAsync(int userId)
     {
+        
         var response = await http.GetFromJsonAsync<List<CartProductResponse>>(
             $"http://localhost:8000/api/cart/{userId}");
 
