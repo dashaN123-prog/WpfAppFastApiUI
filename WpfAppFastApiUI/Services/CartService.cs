@@ -2,6 +2,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Text;
 using WpfAppFastApiUI.Models;
 
 namespace WpfAppFastApiUI.Services;
@@ -56,4 +57,13 @@ public static class CartService
         var response = await http.DeleteAsync($"http://localhost:8000/api/cart/{userId}/product/{productId}");
         return response.IsSuccessStatusCode;
     }
+    public static async Task<bool> DeleteProductFromCartAsync(int userId, int productId, string size)
+    {
+        // Кодируем size в query параметр
+        var url = $"http://localhost:8000/api/cart/{userId}/product/{productId}?size={Uri.EscapeDataString(size)}";
+        var response = await http.DeleteAsync(url);
+        return response.IsSuccessStatusCode;
+    }
+
+
 }

@@ -90,7 +90,7 @@ namespace WpfAppFastApiUI.View
                     if (cartItem == null)
                         return;
 
-                    bool result = await CartService.DeleteProductFromCartAsync(_userId, cartItem.product_id);
+                    bool result = await CartService.DeleteProductFromCartAsync(_userId, cartItem.product_id, cartItem.size);
                     if (result)
                         await ReloadAsync();
                     else
