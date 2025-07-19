@@ -12,10 +12,7 @@ namespace WpfAppFastApiUI.Services;
 public static class CartService
 {
     private static readonly HttpClient http = new HttpClient();
-
-    /// <summary>
-    /// Добавить товар в корзину
-    /// </summary>
+    
     public static async Task<bool> AddToCartAsync(int userId, int productId, int quantity, string size)
     {
         var payload = new AddToCartRequest
