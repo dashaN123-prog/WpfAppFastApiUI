@@ -1,0 +1,27 @@
+<Window x:Class="WpfAppFastApiUI.View.CategoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:WpfAppFastApiUI.View"
+        xmlns:wpfAppFastApiUi="clr-namespace:WpfAppFastApiUI"
+        mc:Ignorable="d"
+        Title="CategoryWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+        
+    <StackPanel x:Name="CategoryStack">
+        <StackPanel.CommandBindings>
+            <CommandBinding Command="wpfAppFastApiUi:CustomCommands.BackToMain" Executed="CommandBinding_OnExecuted" CanExecute="CommandBinding_OnCanExecute"></CommandBinding>
+        </StackPanel.CommandBindings>
+        <TextBlock Text="Категории" TextAlignment="Center" FontSize="28" Margin="20"></TextBlock>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="10" x:Name="CategoryStack1">
+            
+            </StackPanel>
+            <StackPanel Margin="10" x:Name="CategoryStack2">
+            
+            </StackPanel>
+        </StackPanel>
+        
+    </StackPanel>
+</Window>

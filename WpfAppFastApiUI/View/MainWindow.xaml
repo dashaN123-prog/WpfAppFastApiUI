@@ -1,0 +1,43 @@
+﻿<Window x:Class="WpfAppFastApiUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppFastApiUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="local:CustomCommands.GetCategories"
+                        Executed="CommandBinding_OnExecuted"
+                        CanExecute="CommandBinding_OnCanExecute" />
+        <CommandBinding Command="local:CustomCommands.GetCart"
+                        Executed="CommandBindingCart_OnExecuted"
+                        CanExecute="CommandBinding_OnCanExecute" />
+    </Window.CommandBindings>
+
+    <StackPanel HorizontalAlignment="Center">
+        <Image Source="C:\Users\ASUS\Pictures\coffee_beans.jpg"
+               Width="500" Height="250"
+               Margin="0,30"
+               Stretch="Fill" />
+
+        <TextBlock x:Name="MainDesc"
+                   Text="Вшп-Coffee — сеть уютных кофеен с приятной атмосферой и доставкой по всему г. Краснодар. Воспользуйтесь меню ниже для заказа напитков онлайн с доставкой 🚚"
+                   TextAlignment="Center" TextWrapping="Wrap"
+                   FontSize="20" Margin="0,-20,0,0"
+                   Width="600" HorizontalAlignment="Center" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
+            <StackPanel>
+                <Button x:Name="CategoryB" Content="Категории" Width="200" Margin="5" FontSize="20" Command="local:CustomCommands.GetCategories" />
+                <Button x:Name="CartB" Content="Корзина" Width="200" Margin="5" FontSize="20" Command="local:CustomCommands.GetCart" />
+            </StackPanel>
+            <StackPanel>
+                <Button x:Name="CardB" Content="Дисконтная карта" Width="200" Margin="5" FontSize="20" Click="DiscountCard_Click"/>
+                <Button x:Name="RevB" Content="Отзывы" Width="200" Margin="5" FontSize="20" />
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>
